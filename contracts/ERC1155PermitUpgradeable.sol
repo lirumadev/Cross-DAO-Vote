@@ -11,16 +11,9 @@ import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
 import "hardhat/console.sol";
 
 /**
- * @dev Implementation of the ERC20 Permit extension allowing approvals to be made via signatures, as defined in
+ * @dev Implementation of the ERC1155 Permit extension allowing approvals to be made via signatures, as defined in
  * https://eips.ethereum.org/EIPS/eip-2612[EIP-2612].
  *
- * Adds the {permit} method, which can be used to change an account's ERC20 allowance (see {IERC20-allowance}) by
- * presenting a message signed by the account. By not relying on `{IERC20-approve}`, the token holder account doesn't
- * need to send a transaction, and thus is not required to hold Ether at all.
- *
- * _Available since v3.4._
- *
- * @custom:storage-size 51
  */
 abstract contract ERC1155PermitUpgradeable is Initializable, ERC1155Upgradeable, IERC1155PermitUpgradeable, EIP712Upgradeable {
     using CountersUpgradeable for CountersUpgradeable.Counter;
@@ -42,7 +35,7 @@ abstract contract ERC1155PermitUpgradeable is Initializable, ERC1155Upgradeable,
     /**
      * @dev Initializes the {EIP712} domain separator using the `name` parameter, and setting `version` to `"1"`.
      *
-     * It's a good idea to use the same `name` that is defined as the ERC20 token name.
+     * It's a good idea to use the same `name` that is defined as the ERC1155 contract name.
      */
     function __ERC1155Permit_init(string memory name) internal onlyInitializing {
         __EIP712_init_unchained(name, "1");
@@ -51,7 +44,7 @@ abstract contract ERC1155PermitUpgradeable is Initializable, ERC1155Upgradeable,
     function __ERC1155Permit_init_unchained(string memory) internal onlyInitializing {}
 
     /**
-     * @dev See {IERC20Permit-permit}.
+     * @dev See {IERC1155Permit-permit}.
      */
     function permit(
         address owner,
@@ -90,14 +83,14 @@ abstract contract ERC1155PermitUpgradeable is Initializable, ERC1155Upgradeable,
     }
 
     /**
-     * @dev See {IERC20Permit-nonces}.
+     * @dev See {IERC1155Permit-nonces}.
      */
     function nonces(address owner) public view virtual override returns (uint256) {
         return _nonces[owner].current();
     }
 
     /**
-     * @dev See {IERC20Permit-DOMAIN_SEPARATOR}.
+     * @dev See {IERC1155Permit-DOMAIN_SEPARATOR}.
      */
     // solhint-disable-next-line func-name-mixedcase
     function DOMAIN_SEPARATOR() external view override returns (bytes32) {

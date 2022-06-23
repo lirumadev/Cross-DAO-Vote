@@ -136,7 +136,7 @@ const main = async () => {
 async function getPermitSignature(signer, token, spender, value, deadline) {
     const [nonce, name, version, chainId] = await Promise.all([
     token.nonces(signer.address),
-    "DAOPermit", // name of initiated EIP-712
+    "DAOToken", // name of initiated EIP-712 name from factory contract
       "1", // version of EIP-712
       31337 //signer.getChainId(),
     ])

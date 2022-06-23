@@ -9,7 +9,7 @@ contract DAOToken is IERC165Upgradeable, ERC1155PermitUpgradeable {
 
     function initialize() initializer public payable {
         __ERC1155_init("https://ipfs.io/ipfs/abcdefg/{id}.json");
-        __ERC1155Permit_init("DAOPermit");
+        __ERC1155Permit_init("DAOToken");
     }
 
     /**
