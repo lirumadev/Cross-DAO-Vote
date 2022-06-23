@@ -16,7 +16,7 @@ Each proposal creation and casted vote will transfer one(1) token of the specifi
 # Custodial contract
 Account.sol contract hold tokens that has been used after proposal creation or vote casted.
 This contract will be automatically created for each first time proposer or voter.
-User able to claim their used token from this contract after voting period ends or after proposer cancel the proposal.
+User able to claim their used token held by this contract after voting period ends or after proposer cancel the proposal.
 
 # Development notes
 This DAO voting contract implements EIP-2612 that uses Permit function that verify signature for token approval handling. 
