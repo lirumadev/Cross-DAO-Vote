@@ -10,7 +10,7 @@ DAOVote.sol is the main contract for handling proposals, votes, and token claims
 Proposer need to specify which DAO contract and token ID will be used for the proposal creation.
 Proposer can specify multiple DAO contracts that can perform voting for the particular proposal.
 This list of DAO contract addresses merkle tree will be computed off-chain and will be saved on-chain as hashed merkle root.
-Voter must hold any token of the allowed DAO contract addresses.
+In order to perform voting, voter must hold any token of the allowed DAO contract addresses.
 Each proposal creation and casted vote will transfer one(1) token of the specified token ID to a custodial account contract.
 
 # Custodial contract
