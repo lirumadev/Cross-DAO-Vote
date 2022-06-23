@@ -138,7 +138,7 @@ async function getPermitSignature(signer, token, spender, value, deadline) {
     token.nonces(signer.address),
     "DAOToken", // name of initiated EIP-712 name from factory contract
       "1", // version of EIP-712
-      31337 //signer.getChainId(),
+      signer.getChainId(),
     ])
   
     return ethers.utils.splitSignature(
