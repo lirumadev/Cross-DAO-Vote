@@ -11,7 +11,7 @@ Proposer need to specify which DAO contract and token ID will be used for the pr
 Proposer can specify multiple DAO contracts that can perform voting for the particular proposal.
 This list of DAO contract addresses merkle tree will be computed off-chain and will be saved on-chain as hashed merkle root.
 Voter must hold any token of the allowed DAO contract addresses.
-Each proposal creation and casted vote will transfer the specified token ID to a custodial account contract.
+Each proposal creation and casted vote will transfer one(1) token of the specified token ID to a custodial account contract.
 
 # Custodial contract
 Account.sol contract hold tokens that has been used after proposal creation or vote casted.
@@ -30,6 +30,6 @@ There are also other **multiple best practices smart contract development patter
 * Modifier as access restrictions
 
 **Development room of improvements**
-* Remove token value for verifying signature for the Permit function as this token value are not utilized during ERC-1155 standard token approval function call 'setApprovalForAll'.
+* Remove token value parameter for verifying signature for the Permit function as this token value are not utilized during ERC-1155 standard token approval function call 'setApprovalForAll'.
 * Allow voter to specify how many token(s) to be used for voting instead of restrict it to one(1).
 * Allow proposer to specify combination of DAO contract addresses with respectives token ID that are allowed to cast a vote.
