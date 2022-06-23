@@ -7,6 +7,11 @@ import "hardhat/console.sol";
 
 contract DAOToken is IERC165Upgradeable, ERC1155PermitUpgradeable {
 
+    /**
+    * @dev Initialize function are only called once for upgradeable proxy contract
+           This contract does not use constructor function to avoid state variables conflicts
+           Initiates ERC1155 Permit 'name' for EIP-2612 usage
+    */
     function initialize() initializer public payable {
         __ERC1155_init("https://ipfs.io/ipfs/abcdefg/{id}.json");
         __ERC1155Permit_init("DAOToken");
