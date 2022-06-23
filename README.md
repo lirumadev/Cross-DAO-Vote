@@ -1,6 +1,6 @@
 # Cross-DAO-Vote
 This project is mainly for Polygon screening test purpose.
-DAO voting contract allows user to **handling proposals, votes, and token claims across multiple DAO contracts** in the same chain network (EVM-compatible only). This voting contract is only meant for ERC-1155 token usage.
+Main objective of this voting contract is for **handling proposals, votes, and token claims across multiple DAO contracts** in the same chain network (EVM-compatible only). This voting contract is only meant for ERC-1155 token usage.
 
 # Factory contract
 DAOToken.sol implements ERC-1155 standard and used for minting token that will be used for proposal creation and vote purposes.
