@@ -23,14 +23,6 @@ abstract contract ERC1155PermitUpgradeable is Initializable, ERC1155Upgradeable,
     // solhint-disable-next-line var-name-mixedcase
     bytes32 private constant _PERMIT_TYPEHASH =
         keccak256("Permit(address owner,address spender,uint256 value,uint256 nonce,uint256 deadline)");
-    /**
-     * @dev In previous versions `_PERMIT_TYPEHASH` was declared as `immutable`.
-     * However, to ensure consistency with the upgradeable transpiler, we will continue
-     * to reserve a slot.
-     * @custom:oz-renamed-from _PERMIT_TYPEHASH
-     */
-    // solhint-disable-next-line var-name-mixedcase
-    bytes32 private _PERMIT_TYPEHASH_DEPRECATED_SLOT;
 
     /**
      * @dev Initializes the {EIP712} domain separator using the `name` parameter, and setting `version` to `"1"`.
@@ -44,7 +36,7 @@ abstract contract ERC1155PermitUpgradeable is Initializable, ERC1155Upgradeable,
     function __ERC1155Permit_init_unchained(string memory) internal onlyInitializing {}
 
     /**
-     * @dev See {IERC1155Permit-permit}.
+     * @dev ERC-1155 Permit.
      */
     function permit(
         address owner,
@@ -83,14 +75,14 @@ abstract contract ERC1155PermitUpgradeable is Initializable, ERC1155Upgradeable,
     }
 
     /**
-     * @dev See {IERC1155Permit-nonces}.
+     * @dev Permit nonces.
      */
     function nonces(address owner) public view virtual override returns (uint256) {
         return _nonces[owner].current();
     }
 
     /**
-     * @dev See {IERC1155Permit-DOMAIN_SEPARATOR}.
+     * @dev Domain separator
      */
     // solhint-disable-next-line func-name-mixedcase
     function DOMAIN_SEPARATOR() external view override returns (bytes32) {
@@ -100,7 +92,6 @@ abstract contract ERC1155PermitUpgradeable is Initializable, ERC1155Upgradeable,
     /**
      * @dev "Consume a nonce": return the current value and increment.
      *
-     * _Available since v4.1._
      */
     function _useNonce(address owner) internal virtual returns (uint256 current) {
         CountersUpgradeable.Counter storage nonce = _nonces[owner];
@@ -108,10 +99,4 @@ abstract contract ERC1155PermitUpgradeable is Initializable, ERC1155Upgradeable,
         nonce.increment();
     }
 
-    /**
-     * @dev This empty reserved space is put in place to allow future versions to add new
-     * variables without shifting down storage in the inheritance chain.
-     * See https://docs.openzeppelin.com/contracts/4.x/upgradeable#storage_gaps
-     */
-    uint256[49] private __gap;
 }
