@@ -31,8 +31,7 @@ There are also other **multiple best practices smart contract development patter
 * Pull-over-push pattern
 * Modifier as access restrictions
 
-**Security tests**
-All contracts (DAOToken.sol, DAOVote.sol, and Account.sol) was tested using Slither.
+**Security tests** - All contracts (DAOToken.sol, DAOVote.sol, and Account.sol) was tested using Slither.
 No major vulnerabilities or error found.
 
 **Development room of improvements**
