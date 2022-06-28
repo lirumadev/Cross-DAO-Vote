@@ -4,11 +4,13 @@ Main objective of this voting contract is for **handling proposals, votes, and t
 
 # Factory contract
 DAOToken.sol implements ERC-1155 standard and used for minting token that will be used for proposal creation and vote purposes.
+This contract implements EIP-2612 for verifying signature using Permit function.
 
 # Voting contract
 DAOVote.sol is the main contract for handling proposals, votes, and token claims.
 Proposer need to specify which DAO contract and token ID will be used for the proposal creation.
-Proposer can specify multiple DAO contracts that can perform voting for the particular proposal.
+Proposer can specify multiple DAO contracts that can perform voting on the particular proposal.
+Those DAO token contract must implement EIP-2612 for verifying signature on chain using Permit function.
 This list of DAO contract addresses merkle tree will be computed off-chain and will be saved on-chain as hashed merkle root.
 In order to perform voting, voter must hold any token of the allowed DAO contract addresses.
 Each proposal creation and casted vote will transfer one(1) token of the specified token ID to a custodial 'Account' contract.
@@ -16,7 +18,7 @@ Each proposal creation and casted vote will transfer one(1) token of the specifi
 # Custodial contract
 Account.sol contract hold tokens that has been used after proposal creation or vote casted.
 This 'Account' contract will be automatically created for each first time proposer or voter.
-User able to claim their used token held by this contract after voting period ends or after proposer cancel the proposal.
+User will be able to claim their used token held by this contract after voting period ends or after proposer cancel the proposal.
 
 # Development notes
 This DAO voting contract implements EIP-2612 that uses Permit function that verify signature for ERC-1155 token approval handling. 
