@@ -31,6 +31,10 @@ There are also other **multiple best practices smart contract development patter
 * Pull-over-push pattern
 * Modifier as access restrictions
 
+**Security tests**
+All contracts (DAOToken.sol, DAOVote.sol, and Account.sol) was tested using Slither.
+No major vulnerabilities or error found.
+
 **Development room of improvements**
 * Remove token 'value' parameter for verifying signature for the Permit function as this token value are not utilized during ERC-1155 standard token approval function call 'setApprovalForAll'.
 * Allow voter to specify how many token(s) to be used for voting instead of restrict it to one(1).
