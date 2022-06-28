@@ -10,7 +10,7 @@ This contract implements EIP-2612 for verifying signature using Permit function.
 DAOVote.sol is the main contract for handling proposals, votes, and token claims.
 Proposer need to specify which DAO contract and token ID will be used for the proposal creation.
 Proposer can specify multiple DAO contracts that can perform voting on the particular proposal.
-Those DAO token contract must implement EIP-2612 for verifying signature on chain using Permit function.
+Those DAO token contracts must implement EIP-2612 for verifying signature on chain using Permit function.
 This list of DAO contract addresses merkle tree will be computed off-chain and will be saved on-chain as hashed merkle root.
 In order to perform voting, voter must hold any token of the allowed DAO contract addresses.
 Each proposal creation and casted vote will transfer one(1) token of the specified token ID to a custodial 'Account' contract.
