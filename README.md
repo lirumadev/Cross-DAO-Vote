@@ -22,7 +22,7 @@ User will be able to claim their used token held by this contract after voting p
 
 # Development notes
 This DAO voting contract implements EIP-2612 that uses Permit function that verify signature for ERC-1155 token approval handling. 
-This gasless transaction will remove hassle of approving token first before transferring it to another address.
+This gasless transaction will remove hassle of approving token first before transferring the token to another address on another transaction.
 There are also other **multiple best practices smart contract development patterns and methods** that you can discover in the codes.
 * Transparent upgradeable proxy contract
 * Factory pattern
