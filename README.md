@@ -30,6 +30,6 @@ There are also other **multiple best practices smart contract development patter
 * Modifier as access restrictions
 
 **Development room of improvements**
-* Remove token value parameter for verifying signature for the Permit function as this token value are not utilized during ERC-1155 standard token approval function call 'setApprovalForAll'.
+* Remove token 'value' parameter for verifying signature for the Permit function as this token value are not utilized during ERC-1155 standard token approval function call 'setApprovalForAll'.
 * Allow voter to specify how many token(s) to be used for voting instead of restrict it to one(1).
 * Allow proposer to specify combination of DAO contract addresses with respectives token ID that are allowed to cast a vote.
