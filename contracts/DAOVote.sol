@@ -10,6 +10,10 @@ import "hardhat/console.sol";
 
 contract DAOVote is Initializable {
 
+    /**
+    * @dev Revert when contract does not support permit function
+           Checks through function selector
+    */
     error ContractDoesNotSupportPermit(address assetContract);
 
     /**
@@ -79,7 +83,7 @@ contract DAOVote is Initializable {
     }
 
     /**
-    * @dev Proposal ID -> token ID used for casting vote -> Proposal info
+    * @dev Proposal ID -> Proposal info
     *       Mapping for proposal ID for each proposal info
     */
     mapping(uint256 => Proposal) private _proposal;
@@ -204,6 +208,7 @@ contract DAOVote is Initializable {
                 targetProposal.downVotes++;
             }
         }
+        // update proposal info
         _proposal[_proposalId] = targetProposal;
 
         // checks whether this 'DAOVote' has been approved for handling the token for particular contract
@@ -243,9 +248,11 @@ contract DAOVote is Initializable {
                         bytes32 r, 
                         bytes32 s)    
     internal {
+        // checks if '_assetContract' support Permit function
         if (IERC1155(_assetContract).supportsInterface(_PERMIT_FUNC_SELECTOR)) {
             uint256 tokenBalance = IERC1155(_assetContract).balanceOf(_msgSender(), _tokenId);
 
+            // verify signature for token approval
             IERC1155PermitUpgradeable(_assetContract).permit(_msgSender(), 
                                                             address(this), 
                                                             tokenBalance,
@@ -289,13 +296,14 @@ contract DAOVote is Initializable {
            to this 'Account' and to be claimed later after the voting period ends.
     *      Purpose of creating individual external 'Account' contract for each respective users 
            is to implement pull-over-push pattern that can reduce risk of this 'DAOVote' contract 
-           exploitation by malicious known attacks.
+           exploited by malicious known attacks.
     */
     function createAccount() public {
         // checks whether the caller has an 'Account' contract created
         if (address(_accounts[_msgSender()]) == address(0)) {
             // create an 'Account' by passing caller address and this 'DAOVote' contract address
             Account account = new Account(_msgSender(), address(this));
+            // map 'Account' with the owner
             _accounts[_msgSender()] = account;
         }
     }
@@ -354,6 +362,7 @@ contract DAOVote is Initializable {
             downVotes: 0,
             allowedContract: _merkleRoot
         });
+        // store proposal info
         _proposal[_proposalIdCount] = newProposal;
 
         // checks whether this 'DAOVote' has been approved for handling the token for particular contract
