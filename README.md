@@ -1,5 +1,6 @@
 # Cross-DAO-Vote
 This project is mainly for Polygon screening test purpose.
+They asking to come out with a smart contract of our own idea.
 Main objective of this voting contract is for **handling proposals, votes, and token claims across multiple DAO contracts** in the same chain network (EVM-compatible only). This voting contract is only meant for ERC-1155 token usage.
 
 # Factory contract
